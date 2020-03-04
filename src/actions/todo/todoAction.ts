@@ -15,10 +15,22 @@ export interface FetchTodosAction {
     payload: Todo[]
 }
 
+export interface DeleteToDoAction {
+    type: ActionTypes.deleteTodo,
+    payload: number;
+}
+
 export const fetchTodos = () => async (dispatch: Dispatch) => {
     const response = await axios.get<Todo[]>(url);
     dispatch<FetchTodosAction>({
         type: ActionTypes.fetchTodos,
         payload: response.data
     })
+};
+
+export const deleteTodo = (id: number) : DeleteToDoAction => {
+    return {
+        type: ActionTypes.deleteTodo,
+        payload: id
+    }
 };
