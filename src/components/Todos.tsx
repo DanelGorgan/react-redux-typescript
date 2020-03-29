@@ -13,7 +13,7 @@ interface AppProps {
     deleteTodo: typeof deleteTodo;
 }
 
-class App extends React.Component<AppProps, AppState> {
+class Todos extends React.Component<AppProps, AppState> {
     constructor(props: AppProps) {
         super(props);
         this.state =  { fetching : false }
@@ -58,4 +58,4 @@ const mapStateToProps = (state: StoreState): { todos: Todo[] } => ({
     todos: state.todos
 });
 
-export default connect(mapStateToProps, {fetchTodos, deleteTodo})(App);
+export default connect(mapStateToProps, {fetchTodos, deleteTodo})(Todos);
